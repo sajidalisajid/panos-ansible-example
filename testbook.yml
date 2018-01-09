@@ -1,16 +1,20 @@
-#dingeling comment motherfucker.
+# All Ansible playbooks start with: ---
 ---
+# This defines which machines the playbook will run on
 - hosts: localhost
   
+  # This defines which libraries are used for the playbook
   roles:
     - role: PaloAltoNetworks.paloaltonetworks
 
+  # This defines the different actions of the playbook
   tasks:
   - name: include variables (free-form)
     include_vars: vars.yml
     no_log: "no"
     
-  - name: permit ssh to bla
+  # This is the rule we will add to our palo alto
+  - name: permit ssh to 1.1.1.1
     panos_security_rule:
       operation: "add"
       ip_address: "{{ mgmt_ip }}"
